@@ -11,6 +11,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// HealthCheck godoc
+// @Summary Show the status of server.
+// @Description get the status of server.
+// @Tags root
+// @Accept json
+// @Produce json
+// @Success 200
+// @Router /pagotoken [get]
 func GetAuthToken(c *gin.Context) {
 	fmt.Println(" inside GetAuthToken")
 	//pagoAuthToken := "no_token_found"

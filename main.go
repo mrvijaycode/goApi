@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"os"
 	"time"
+
+	_ "main.go/docs"
 
 	"github.com/gin-gonic/gin"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -12,19 +13,21 @@ import (
 	viper "github.com/spf13/viper"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	//_ "wadzpay.com/poc/app1/docs"
 )
 
 // @title           Swagger Example API
-// @version         2.0
-// @description     This is a sample helloworld project.
+// @version         1.0
+// @description     This is a sample wadzpay project.
 // @termsOfService  http://swagger.io/terms/
 // @contact.name   API Support - Blockchain Wadzpay
 // @contact.url    http://www.swagger.io/support
 // @contact.email  support@swagger.io
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+// @host localhost:9093
+// @BasePath /
+// @schemes http
 
-// @license.name  Apache 2.0
-// @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
 func main() {
 	/* CORS
 	   "github.com/gin-contrib/cors"
@@ -43,15 +46,19 @@ func main() {
 	log.WithFields(log.Fields{
 		"attrib1": "val1",
 		"attrib2": 10,
-	}).Info("info msg from looger")
+	}).Info("info msg from logger")
 	port := viper.GetString("port")
 	//prodport := viper.Get("prod.port")
 
 	fmt.Println("current running port :", port)
 	//fmt.Println("current running port for prod :", prodport)
 	// rout.Run("localhost:8080") // assumes localhost:8080
-	servererr := http.ListenAndServe(":"+port, rout)
-	log.Fatal(servererr)
+	//servererr := http.ListenAndServe(":"+port, rout)
+	//log.Fatal(servererr)
+
+	if err := rout.Run("localhost:9093"); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func init() {
