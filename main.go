@@ -15,7 +15,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-// @title           Swagger Example API
+// @title           Wadzpay go API
 // @version         1.0
 // @description     This is a sample wadzpay project.
 // @termsOfService  http://swagger.io/terms/
@@ -29,16 +29,10 @@ import (
 // @schemes http
 
 func main() {
-	/* CORS
-	   "github.com/gin-contrib/cors"
-	    router.Use(cors.Default())
-	*/
+
 	rout := gin.Default()
 
 	rout.Use(Logger()) //use of middleware
-
-	//rout.GET("/helloworld", Logger(), Greet)
-	//rout.GET("/helloworld", Greet)
 	rout.GET("/pagotoken", GetAuthToken)
 	rout.GET("/pagoentities", GetListFromPagoEntities)
 	rout.GET("/metrics", gin.WrapH(promhttp.Handler()))
@@ -50,14 +44,13 @@ func main() {
 	port := viper.GetString("port")
 	//prodport := viper.Get("prod.port")
 
-	fmt.Println("current running port :", port)
-	//fmt.Println("current running port for prod :", prodport)
-	// rout.Run("localhost:8080") // assumes localhost:8080
 	//servererr := http.ListenAndServe(":"+port, rout)
 	//log.Fatal(servererr)
 
-	if err := rout.Run("localhost:9093"); err != nil {
+	if err := rout.Run("localhost:" + port); err != nil {
 		log.Fatal(err)
+	} else {
+		fmt.Println("current running port :", port)
 	}
 }
 
@@ -76,15 +69,6 @@ func init() {
 	viper.SetConfigName("config") // Register config file name (no extension)
 	viper.SetConfigType("json")   // Look for specific type
 	viper.ReadInConfig()
-	/*
-			viper.WatchConfig()
-		viper.OnConfigChange(func(e fsnotify.Event) {
-		    fmt.Println("Config file changed:", e.Name)
-		})
-			//
-			// The WatchConfig() method will look for changes in the config file,
-			// while the onConfigChange is an optional method that will run each time the file changes
-	*/
 
 }
 
@@ -108,15 +92,3 @@ func Logger() gin.HandlerFunc {
 		log.Println(status, " as status")
 	}
 }
-
-/*
- rout.Use(FindUserAgent())
-func FindUserAgent() gin.HandlerFunc {
-    return func(c *gin.Context) {
-        log.Println(c.GetHeader("User-Agent"))
-        // Before calling handler
-        c.Next()
-        // After calling handler
-    }
-}
-*/

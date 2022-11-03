@@ -5,7 +5,7 @@
     "swagger": "2.0",
     "info": {
         "description": "This is a sample wadzpay project.",
-        "title": "Swagger Example API",
+        "title": "Wadzpay go API",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "API Support - Blockchain Wadzpay",
@@ -21,6 +21,26 @@
     "host": "localhost:9093",
     "basePath": "/",
     "paths": {
+        "/pagoentities": {
+            "get": {
+                "description": "get the status of server.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "root"
+                ],
+                "summary": "Show the status of server.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
         "/pagotoken": {
             "get": {
                 "description": "get the status of server.",

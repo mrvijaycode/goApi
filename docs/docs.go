@@ -25,6 +25,26 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/pagoentities": {
+            "get": {
+                "description": "get the status of server.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "root"
+                ],
+                "summary": "Show the status of server.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
         "/pagotoken": {
             "get": {
                 "description": "get the status of server.",
@@ -54,7 +74,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:9093",
 	BasePath:         "/",
 	Schemes:          []string{"http"},
-	Title:            "Swagger Example API",
+	Title:            "Wadzpay go API",
 	Description:      "This is a sample wadzpay project.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

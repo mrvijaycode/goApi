@@ -79,6 +79,15 @@ func HttpGetAuthTokenFromPAGO(fullUrl string) (interface{}, error) {
 	return tokeninterface, nil
 	//return strBody, nil
 }
+
+// HealthCheck godoc
+// @Summary Show the status of server.
+// @Description get the status of server.
+// @Tags root
+// @Accept json
+// @Produce json
+// @Success 200
+// @Router /pagoentities [get]
 func GetListFromPagoEntities(c *gin.Context) {
 	//pago_trans_status_url := "https://ipos-gateway.test.pago.dev/payment-proxy/transaction-status/6dc85cc1-a9f9-4caa-bd1f-a9367d1ed813"
 
