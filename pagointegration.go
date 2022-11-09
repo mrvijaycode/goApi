@@ -30,7 +30,6 @@ func GetAuthToken(c *gin.Context) {
 	}
 	//fmt.Println("token : ",pago_token)
 	c.JSON(http.StatusOK, pago_token)
-
 	//return pagoAuthToken
 }
 
@@ -70,12 +69,6 @@ func HttpGetAuthTokenFromPAGO(fullUrl string) (interface{}, error) {
 		fmt.Printf("Error in JSON unmarshalling %s", err)
 		return nil, jsonErr
 	}
-	//fmt.Println("token Details :", string(tokentokeninterface))
-	/*
-		fmt.Println("access_token :", tokeninterface.access_token)
-		fmt.Println("access_token :", tokeninterface.expires_in)
-		fmt.Println("access_token :", tokeninterface.token_type)
-	*/
 	return tokeninterface, nil
 	//return strBody, nil
 }
@@ -89,21 +82,12 @@ func HttpGetAuthTokenFromPAGO(fullUrl string) (interface{}, error) {
 // @Success 200
 // @Router /pagoentities [get]
 func GetListFromPagoEntities(c *gin.Context) {
-	//pago_trans_status_url := "https://ipos-gateway.test.pago.dev/payment-proxy/transaction-status/6dc85cc1-a9f9-4caa-bd1f-a9367d1ed813"
-
-	//return "NO Implementation"
 	requestURL := "https://ipos-gateway.test.pago.dev/payment-proxy/pos-entities"
-	//requestURL := "http://api.open-notify.org/astros.json"
-	//jsonBody := []byte(`{"client_message": "hello, server!"}`)
-	//jsonBody := []byte(``)
-	//bodyReader := bytes.NewReader(jsonBody)
 	req, err := http.NewRequest(http.MethodGet, requestURL, nil)
 	if err != nil {
 		fmt.Printf("client: could not create request: %s\n", err)
 		panic(err)
 	}
-	//req.Header.Set("Content-Type", "application/json")
-
 	client := http.Client{
 		Timeout: 3 * time.Second,
 	}
@@ -124,8 +108,6 @@ func GetListFromPagoEntities(c *gin.Context) {
 		fmt.Printf("Error %s", err)
 		return
 	}
-
 	fmt.Println(pago_entities)
 	c.JSON(http.StatusOK, pago_entities)
-
 }

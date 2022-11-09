@@ -35,6 +35,7 @@ func main() {
 	rout.Use(Logger()) //use of middleware
 	rout.GET("/pagotoken", GetAuthToken)
 	rout.GET("/pagoentities", GetListFromPagoEntities)
+	rout.GET("/createalgoaccount", CreateAlgorandAccount)
 	rout.GET("/metrics", gin.WrapH(promhttp.Handler()))
 	rout.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 	log.WithFields(log.Fields{

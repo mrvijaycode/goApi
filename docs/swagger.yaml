@@ -13,6 +13,19 @@ info:
   title: Wadzpay go API
   version: "1.0"
 paths:
+  /createalgoaccount:
+    get:
+      consumes:
+      - application/json
+      description: get the status of server.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Create a new algo account.
+      tags:
+      - root
   /pagoentities:
     get:
       consumes:

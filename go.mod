@@ -3,6 +3,7 @@ module main.go
 go 1.19
 
 require (
+	github.com/algorand/go-algorand-sdk v1.23.0
 	github.com/gin-gonic/gin v1.8.1
 	github.com/prometheus/client_golang v1.13.1
 	github.com/sirupsen/logrus v1.9.0
@@ -16,6 +17,7 @@ require (
 	github.com/KyleBanks/depth v1.2.1 // indirect
 	github.com/PuerkitoBio/purell v1.1.1 // indirect
 	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
+	github.com/algorand/go-codec/codec v1.1.8 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
