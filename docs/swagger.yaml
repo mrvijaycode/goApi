@@ -52,6 +52,19 @@ paths:
       summary: Show the status of server.
       tags:
       - root
+  /postTransaction:
+    post:
+      consumes:
+      - application/json
+      description: get the status of server.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Show the status of server.
+      tags:
+      - root
 schemes:
 - http
 swagger: "2.0"

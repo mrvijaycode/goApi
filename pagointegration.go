@@ -83,6 +83,7 @@ func HttpGetAuthTokenFromPAGO(fullUrl string) (interface{}, error) {
 // @Router /pagoentities [get]
 func GetListFromPagoEntities(c *gin.Context) {
 	requestURL := "https://ipos-gateway.test.pago.dev/payment-proxy/pos-entities"
+	//requestURL := "https://ipos-gateway.dev.pago.dev/payment-proxy/pos-entities"
 	req, err := http.NewRequest(http.MethodGet, requestURL, nil)
 	if err != nil {
 		fmt.Printf("client: could not create request: %s\n", err)
@@ -110,4 +111,50 @@ func GetListFromPagoEntities(c *gin.Context) {
 	}
 	fmt.Println(pago_entities)
 	c.JSON(http.StatusOK, pago_entities)
+}
+
+// HealthCheck godoc
+// @Summary Show the status of server.
+// @Description get the status of server.
+// @Tags root
+// @Accept json
+// @Produce json
+// @Success 200
+// @Router /postTransaction [post]
+func PostTransaction(c *gin.Context) {
+	postURL := "https://ipos-gateway.test.pago.dev/payment-proxy/transaction-id"
+
+	// JSON body
+	body := []byte(`{
+		"posId": "pos_1",
+		"merchantTransactionId":"65",
+		"amount": 2.1,
+		"receipt": "Receipt",
+		"callbackUrl":"https://acme.com/transaction-status/123456789"
+		}`)
+
+	r, err := http.NewRequest(http.MethodPost, postURL, bytes.NewBuffer(body))
+	if err != nil {
+		panic(err)
+	}
+
+	r.Header.Set("Content-Type", "application/json; charset=UTF-8")
+
+	client := &http.Client{}
+	res, err := client.Do(r)
+	if err != nil {
+		panic(err)
+	}
+
+	defer res.Body.Close()
+	resbody, err := io.ReadAll(res.Body)
+
+	var pago_res interface{}
+
+	jsonErr := json.Unmarshal(resbody, &pago_res)
+	if jsonErr != nil {
+		fmt.Printf("Error %s", err)
+	}
+
+	c.JSON(http.StatusOK, pago_res)
 }

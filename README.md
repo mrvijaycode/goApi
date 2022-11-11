@@ -3,8 +3,13 @@
 To setup modules
 
 ```bash
-go mod init wadzpay/mods
+go mod init wadzpay
 ```
+
+```bash
+go mod tidy
+```
+
 To initiate the swagger
 ```bash
 swag init

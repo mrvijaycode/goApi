@@ -55,6 +55,7 @@ func CreateAlgorandAccount(c *gin.Context) {
 		//returnAccount = fmt.Sprintf("Account: %s\n", marshal_account)
 		var algoAccount interface{}
 		json.Unmarshal(marshal_account, &algoAccount)
+		//json.Unmarshal(account, &algoAccount)
 
 		returnAccount = algoAccount
 
