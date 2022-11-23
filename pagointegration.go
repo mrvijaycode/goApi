@@ -113,27 +113,44 @@ func GetListFromPagoEntities(c *gin.Context) {
 	c.JSON(http.StatusOK, pago_entities)
 }
 
+//var data1 interface{}
+
 // HealthCheck godoc
 // @Summary Show the status of server.
-// @Description get the status of server.
+// @Description Post transaction.
 // @Tags root
 // @Accept json
 // @Produce json
+// @Param transaction_details body interface{} true "Add transaction details"
 // @Success 200
 // @Router /postTransaction [post]
 func PostTransaction(c *gin.Context) {
 	postURL := "https://ipos-gateway.test.pago.dev/payment-proxy/transaction-id"
 
 	// JSON body
-	body := []byte(`{
-		"posId": "pos_1",
-		"merchantTransactionId":"65",
-		"amount": 2.1,
-		"receipt": "Receipt",
-		"callbackUrl":"https://acme.com/transaction-status/123456789"
-		}`)
+	/*body := []byte(`{
+	"posId": "pos_1",
+	"merchantTransactionId":"65",
+	"amount": 2.1,
+	"receipt": "Receipt",
+	"callbackUrl":"https://acme.com/transaction-status/123456789"
+	}`)
+	*/
 
-	r, err := http.NewRequest(http.MethodPost, postURL, bytes.NewBuffer(body))
+	transaction_details := c.Request.Body
+
+	jsonData, err := io.ReadAll(transaction_details)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Printf("-- %s", jsonData)
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	r, err := http.NewRequest(http.MethodPost, postURL, bytes.NewBuffer(jsonData))
 	if err != nil {
 		panic(err)
 	}

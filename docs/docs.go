@@ -25,6 +25,26 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/bitgoAccounts": {
+            "get": {
+                "description": "Display the wallet accounts.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "root"
+                ],
+                "summary": "Get Bitgo wallet accounts.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
         "/createalgoaccount": {
             "get": {
                 "description": "get the status of server.",
@@ -87,7 +107,7 @@ const docTemplate = `{
         },
         "/postTransaction": {
             "post": {
-                "description": "get the status of server.",
+                "description": "Post transaction.",
                 "consumes": [
                     "application/json"
                 ],
@@ -98,6 +118,17 @@ const docTemplate = `{
                     "root"
                 ],
                 "summary": "Show the status of server.",
+                "parameters": [
+                    {
+                        "description": "Add transaction details",
+                        "name": "transaction_details",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"

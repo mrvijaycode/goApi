@@ -13,6 +13,19 @@ info:
   title: Wadzpay go API
   version: "1.0"
 paths:
+  /bitgoAccounts:
+    get:
+      consumes:
+      - application/json
+      description: Display the wallet accounts.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get Bitgo wallet accounts.
+      tags:
+      - root
   /createalgoaccount:
     get:
       consumes:
@@ -56,7 +69,14 @@ paths:
     post:
       consumes:
       - application/json
-      description: get the status of server.
+      description: Post transaction.
+      parameters:
+      - description: Add transaction details
+        in: body
+        name: transaction_details
+        required: true
+        schema:
+          type: object
       produces:
       - application/json
       responses:
