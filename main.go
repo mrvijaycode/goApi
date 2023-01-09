@@ -15,7 +15,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-// @title           Wadzpay go API
+// @title           WadzPay Go API
 // @version         1.0
 // @description     This is a sample wadzpay project.
 // @termsOfService  http://swagger.io/terms/
@@ -38,6 +38,7 @@ func main() {
 	rout.GET("/pagoentities", GetListFromPagoEntities)
 	rout.GET("/createalgoaccount", CreateAlgorandAccount)
 	rout.POST("/postTransaction", PostTransaction)
+	rout.POST("/fundAccount/:account", FundAccount)
 	rout.GET("/bitgoAccounts", GetBitgoWalletAddress)
 
 	rout.GET("/metrics", gin.WrapH(promhttp.Handler()))

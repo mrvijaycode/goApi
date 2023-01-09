@@ -13,7 +13,7 @@ import (
 
 // HealthCheck godoc
 // @Summary Create a new algo account.
-// @Description get the status of server.
+// @Description Get the status of server.
 // @Tags root
 // @Accept json
 // @Produce json
@@ -72,4 +72,52 @@ func CreateAlgorandAccount(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, returnAccount)
+}
+
+// HealthCheck godoc
+// @Summary Fund account
+// @Description Funding the account
+// @Tags root
+// @Accept json
+// @Produce json
+// @Param account query string true "Enter valid algo account address:"
+// @Success 200
+// @Router /fundAccount [post]
+func FundAccount(c *gin.Context) {
+
+	account := c.Param("account")
+
+	fmt.Println("Fund the created account using the Algorand TestNet faucet:\n--> https://dispenser.testnet.aws.algodev.network?account=" + account)
+
+	c.JSON(http.StatusOK, account)
+	/*
+		transaction_details := c.Request.Body
+		jsonData, err := io.ReadAll(transaction_details)
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		var tranxDetails interface{}
+
+		jsonErr := json.Unmarshal(jsonData, &tranxDetails)
+
+		if jsonErr != nil {
+			fmt.Printf("Error %s", err)
+			return
+		}
+		fmt.Println(tranxDetails)
+
+		fmt.Printf("-- %s", tranxDetails)
+
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		//fmt.Println("Fund the created account using the Algorand TestNet faucet:\n--> https://dispenser.testnet.aws.algodev.network?account=" + myAddress)
+		fmt.Println("--> Once funded, press ENTER key to continue...")
+		//fmt.Scanln()
+
+		c.JSON(http.StatusOK, tranxDetails)
+	*/
+
 }

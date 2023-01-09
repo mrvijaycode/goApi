@@ -10,7 +10,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: http://swagger.io/terms/
-  title: Wadzpay go API
+  title: WadzPay Go API
   version: "1.0"
 paths:
   /bitgoAccounts:
@@ -30,13 +30,32 @@ paths:
     get:
       consumes:
       - application/json
-      description: get the status of server.
+      description: Get the status of server.
       produces:
       - application/json
       responses:
         "200":
           description: OK
       summary: Create a new algo account.
+      tags:
+      - root
+  /fundAccount:
+    post:
+      consumes:
+      - application/json
+      description: Funding the account
+      parameters:
+      - description: Add transaction details
+        in: query
+        name: account
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Fund account
       tags:
       - root
   /pagoentities:

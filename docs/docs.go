@@ -47,7 +47,7 @@ const docTemplate = `{
         },
         "/createalgoaccount": {
             "get": {
-                "description": "get the status of server.",
+                "description": "Get the status of server.",
                 "consumes": [
                     "application/json"
                 ],
@@ -58,6 +58,35 @@ const docTemplate = `{
                     "root"
                 ],
                 "summary": "Create a new algo account.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/fundAccount": {
+            "post": {
+                "description": "Funding the account",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "root"
+                ],
+                "summary": "Fund account",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Add transaction details",
+                        "name": "account",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -145,7 +174,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:9093",
 	BasePath:         "/",
 	Schemes:          []string{"http"},
-	Title:            "Wadzpay go API",
+	Title:            "WadzPay Go API",
 	Description:      "This is a sample wadzpay project.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
