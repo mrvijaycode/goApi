@@ -3,11 +3,11 @@
 To setup modules
 
 ```bash
-go mod init wadzpay
+go mod tidy
 ```
 
 ```bash
-go mod tidy
+go mod init dimiour
 ```
 
 To initiate the swagger

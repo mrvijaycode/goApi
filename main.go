@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	_ "main.go/docs"
+	_ "dimiour/docs"
 
 	"github.com/gin-gonic/gin"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -15,11 +15,11 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-// @title           WadzPay Go API
+// @title           Vijay Go API
 // @version         1.0
-// @description     This is a sample wadzpay project.
+// @description     This is a sample  project.
 // @termsOfService  http://swagger.io/terms/
-// @contact.name   API Support - Blockchain Wadzpay
+// @contact.name   API Support - Blockchain
 // @contact.url    http://www.swagger.io/support
 // @contact.email  support@swagger.io
 // @license.name Apache 2.0
@@ -34,11 +34,13 @@ func main() {
 
 	rout.Use(Logger()) //use of middleware
 
+	rout.GET("/currencies", DimiourgetBalances)
 	rout.GET("/pagotoken", GetAuthToken)
 	rout.GET("/pagoentities", GetListFromPagoEntities)
 	rout.GET("/createalgoaccount", CreateAlgorandAccount)
 	rout.POST("/postTransaction", PostTransaction)
 	rout.POST("/fundAccount/:account", FundAccount)
+	rout.GET("/currency/:coin", DimiourgetCoinBlance)
 	rout.GET("/bitgoAccounts", GetBitgoWalletAddress)
 
 	rout.GET("/metrics", gin.WrapH(promhttp.Handler()))

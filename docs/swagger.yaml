@@ -3,14 +3,14 @@ host: localhost:9093
 info:
   contact:
     email: support@swagger.io
-    name: API Support - Blockchain Wadzpay
+    name: API Support - Blockchain
     url: http://www.swagger.io/support
-  description: This is a sample wadzpay project.
+  description: This is a sample  project.
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: http://swagger.io/terms/
-  title: WadzPay Go API
+  title: Vijay Go API
   version: "1.0"
 paths:
   /bitgoAccounts:
@@ -39,13 +39,45 @@ paths:
       summary: Create a new algo account.
       tags:
       - root
+  /currencies:
+    get:
+      consumes:
+      - application/json
+      description: display dimiour accounts.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get Dimiour accounts.
+      tags:
+      - dimiour
+  /currency/{coin}:
+    get:
+      consumes:
+      - application/json
+      description: Get coin
+      parameters:
+      - description: 'Enter coin type:'
+        in: query
+        name: coin
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: coin value
+      tags:
+      - dimiour
   /fundAccount:
     post:
       consumes:
       - application/json
       description: Funding the account
       parameters:
-      - description: Add transaction details
+      - description: 'Enter valid algo account address:'
         in: query
         name: account
         required: true

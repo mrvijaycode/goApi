@@ -12,7 +12,7 @@ const docTemplate = `{
         "title": "{{.Title}}",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
-            "name": "API Support - Blockchain Wadzpay",
+            "name": "API Support - Blockchain",
             "url": "http://www.swagger.io/support",
             "email": "support@swagger.io"
         },
@@ -65,6 +65,55 @@ const docTemplate = `{
                 }
             }
         },
+        "/currencies": {
+            "get": {
+                "description": "display dimiour accounts.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dimiour"
+                ],
+                "summary": "Get Dimiour accounts.",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/currency/{coin}": {
+            "get": {
+                "description": "Get coin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dimiour"
+                ],
+                "summary": "coin value",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter coin type:",
+                        "name": "coin",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
         "/fundAccount": {
             "post": {
                 "description": "Funding the account",
@@ -81,7 +130,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Add transaction details",
+                        "description": "Enter valid algo account address:",
                         "name": "account",
                         "in": "query",
                         "required": true
@@ -174,8 +223,8 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:9093",
 	BasePath:         "/",
 	Schemes:          []string{"http"},
-	Title:            "WadzPay Go API",
-	Description:      "This is a sample wadzpay project.",
+	Title:            "Vijay Go API",
+	Description:      "This is a sample  project.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }
