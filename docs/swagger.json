@@ -4,11 +4,11 @@
     ],
     "swagger": "2.0",
     "info": {
-        "description": "This is a sample wadzpay project.",
-        "title": "WadzPay Go API",
+        "description": "This is a sample APP project.",
+        "title": "GO API",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
-            "name": "API Support - Blockchain Wadzpay",
+            "name": "API Support - Blockchain APP",
             "url": "http://www.swagger.io/support",
             "email": "support@swagger.io"
         },
@@ -77,7 +77,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Add transaction details",
+                        "description": "Enter valid algo account address:",
                         "name": "account",
                         "in": "query",
                         "required": true

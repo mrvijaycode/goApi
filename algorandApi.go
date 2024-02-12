@@ -18,7 +18,7 @@ import (
 // @Accept json
 // @Produce json
 // @Success 200
-// @Router /createalgoaccount [get]
+// @Router /createalgoaccount [get]GetListFromPagoEntities
 func CreateAlgorandAccount(c *gin.Context) {
 
 	account := crypto.GenerateAccount()

@@ -15,11 +15,11 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-// @title           WadzPay Go API
+// @title           GO API
 // @version         1.0
-// @description     This is a sample wadzpay project.
+// @description     This is a sample APP project.
 // @termsOfService  http://swagger.io/terms/
-// @contact.name   API Support - Blockchain Wadzpay
+// @contact.name   API Support - Blockchain APP
 // @contact.url    http://www.swagger.io/support
 // @contact.email  support@swagger.io
 // @license.name Apache 2.0

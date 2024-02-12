@@ -3,14 +3,14 @@ host: localhost:9093
 info:
   contact:
     email: support@swagger.io
-    name: API Support - Blockchain Wadzpay
+    name: API Support - Blockchain APP
     url: http://www.swagger.io/support
-  description: This is a sample wadzpay project.
+  description: This is a sample APP project.
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: http://swagger.io/terms/
-  title: WadzPay Go API
+  title: GO API
   version: "1.0"
 paths:
   /bitgoAccounts:
@@ -45,7 +45,7 @@ paths:
       - application/json
       description: Funding the account
       parameters:
-      - description: Add transaction details
+      - description: 'Enter valid algo account address:'
         in: query
         name: account
         required: true
